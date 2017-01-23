@@ -4,45 +4,19 @@ title: What is Pluggable SCM Library
 permalink: /docs/recipes/what-is-it/
 ---
 
-# Documentation
+In brief, Pluggable SCM allows user to use his own desired SCM provider, currently _BitBucket_ and _Gerrit_ are supported.
 
-## `public interface SCMProvider`
+By enabling a standard interface, Java reflection can be used to return dynamic groovy closures in cartridge.
 
-This interfaces defines the specification of an SCMProvider.
+There are two parts of ADOP that are affected by using this library:
 
-## `public Closure get(String projectName, String repoName, String branchName, String credentialId, Closure extras)`
+* Load_Cartridge job
+* [Cartridge DSL code](https://kristapsm.github.io/adop-cartridges-cookbook/docs/recipes/adding-a-pluggable-scm/)
 
-Return a closure representation of SCM section.
+The _pluggable.scm_ package contains:
 
- * **Parameters:**
-   * `projectName` — - name of the project.
-   * `repoName` — - name of the repository to checkout.
-   * `branchName` — - name of the branch to checkout.
-   * `credentialId` — - name of the credential in the Jenkins credential
-
-     manager to use.
-   * `extras` — - extra closures to add to the SCM section.
- * **Returns:** a closure representation of the SCM providers SCM section.
-
-     <p>
-
-## `public Closure trigger(String projectName, String repoName, String branchName)`
-
-Return a closure representation of the SCM providers trigger SCM section.
-
- * **Parameters:**
-   * `projectName` — - name of the project.
-   * `repoName` — - name of the repository to checkout.
-   * `branchName` — - name of the branch checkout on ref updates.
- * **Returns:** closure representation of the SCM providers trigger SCM section.
-
-## `public void createScmRepos(String workspace, String repoNamespace, String codeReviewEnabled, String overwriteRepos) }`
-
-Creates the relevant repositories defined by your cartridge in your chosen SCM provider
-
- * **Parameters:**
-   * `workspace` — Workspace of the cartridge loader job
-   * `namespace` — Location in your SCM provider where your repositories will be created
-   * `overwriteRepos` — Whether the contents of your created repositories are over-written or not
-
-     <p>
+* _SCMProvider_ - an interface which defines the specification of an SCM provider
+* _SCMProviderDataStore_ - an interface for SCM provider data store specification
+* _SCMProviderFactory_ - an interface for SCM provider factory definition responsible for parsing the providers properties and instantiating the correct SCM provider
+* _SCMProviderHandler_ - a class responsible for dispatching SCM provider requests to the correct SCM provider factory
+* _SCMProviderInfo_ - annotation to mark SCM providers
