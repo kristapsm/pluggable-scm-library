@@ -6,11 +6,11 @@ permalink: /docs/recipes/what-is-it/
 
 In brief, Pluggable SCM allows user to use his own desired SCM provider, currently _BitBucket_ and _Gerrit_ are supported.
 
-By enabling a standard interface, Java reflection can be used to return dynamic groovy closures in cartridge.
+By enabling a standard interface, Java reflection can be used to return dynamic groovy closures in cartridge which would act the same as default DSL methods depending on the SCM provider.
 
 There are two parts of ADOP that are affected by using this library:
 
-* Load_Cartridge job
+* [Load_Cartridge job](todo:url)
 * [Cartridge DSL code](https://kristapsm.github.io/adop-cartridges-cookbook/docs/recipes/adding-a-pluggable-scm/)
 
 The _pluggable.scm_ package contains:
