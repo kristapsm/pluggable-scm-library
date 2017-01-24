@@ -22,3 +22,34 @@ The _pluggable.scm_ package contains:
 * _SCMProviderInfo_ - annotation to mark SCM providers
 
 More specific information can be found in [Javadocs](https://kristapsm.github.io/pluggable-scm-library/groovydocs/)
+
+# Using Pluggable SCM Library
+
+To use this library you will need to create your own classes which then would implement above interfaces. For example
+
+```
+  public class GerritSCMProviderFactory implements SCMProviderFactory {}
+```
+
+Then use the factory method to return the instantiated SCM provider with the provided properties 
+
+```
+  public SCMProvider create(Properties scmProviderProperties) {}
+```
+
+from where your _GerritSCMProvider_ will read properties like :
+
+* Host
+* Port
+* Protocol (https, http or ssh)
+* User
+* Endpoint etc.
+
+
+The same way it should be done for example using _SCMProvider_ interface
+
+```
+  public class GerritSCMProvider implements SCMProvider {}
+```
+
+and proceed with defining your own classes for creating repositories etc. and defining _get_ and _trigger_ closures.
