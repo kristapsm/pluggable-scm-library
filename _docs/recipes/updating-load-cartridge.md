@@ -11,7 +11,25 @@ This section describes two ways how to update your ADOP Instance to inherit Plug
 
 # Automatic way
 
-1. Re-run **Load_Platform** job to grab all the DSL codes for the new **Load_Cartridge** job
-2. Update your Jenkins image to be the latest version on the Github repository in your compose and then re-initialise ADOP using **./adop compose init -m _name-of-your-machine_**
+* Re-run **Load_Platform** job to grab all the DSL codes for the new **Load_Cartridge** job
+* Update your Jenkins image to be the latest version on the Github repository in your compose and then re-initialise ADOP using **./adop compose init -m _name-of-your-machine_**
   - _Note:_ Just check the latest Jenkins image version [here](https://github.com/Accenture/adop-docker-compose/blob/master/docker-compose.yml#L203), it contains a couple of additional environment variables, plugins and some properties files in the right location. This change has been described below using _Manual_ way.
-3. Re-generate your Workspace and Project to ensure you have the latest version of **Load_Cartridge** job which should contain some additional fields
+* Re-generate your Workspace and Project to ensure you have the latest version of **Load_Cartridge** job which should contain some additional fields
+
+
+# Manual way
+
+This basically describes what changes have been done on the Jenkins image and if you prefer not to use the latest version.
+
+* Get onto the ADOP/C host and add the following files in the respective locations on the Jenkins volume (you have to create all directories manually)
+  - /var/jenkins_home/userContent/datastore/pluggable/scm/CartridgeLoader/adop-gerrit-1.loader.props
+  
+```
+loader.id=adop-gerrit-1
+gerrit.endpoint=gerrit
+gerrit.user=jenkins
+gerrit.port=29418
+gerrit.protocol=ssh
+gerrit.permissions.path=${PROJECT_NAME}/permissions
+gerrit.permissions.with_review.path=${PROJECT_NAME}/permissions-with-review
+```
