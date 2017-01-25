@@ -65,7 +65,7 @@ _Note: Please use your own values, below are just examples!_
   
   scm.gerrit.server.profile=ADOP Gerrit
   ```
-* Clone this repository on the volume aswell https://github.com/RobertNorthard/adop-pluggable-scm and move the _adop-pluggable-scm/src/main/groovy/pluggable/_ folder into _/var/jenkins_home/userContent/job_dsl_additional_classpath/_
+* Clone this repository on the volume aswell [adop-pluggable-scm](https://github.com/RobertNorthard/adop-pluggable-scm) and move the _adop-pluggable-scm/src/main/groovy/pluggable/_ folder into _/var/jenkins_home/userContent/job_dsl_additional_classpath/_
 * Add the following Environment Variables in _Manage Jenkins -> Configure System -> Global Properties_
   - PLUGGABLE_SCM_PROVIDER_PROPERTIES_PATH="/var/jenkins_home/userContent/datastore/pluggable/scm"
   - PLUGGABLE_SCM_PROVIDER_PATH="/var/jenkins_home/userContent/job_dsl_additional_classpath/"
@@ -75,4 +75,5 @@ _Note: Please use your own values, below are just examples!_
   - _Note:_ If there is nothing in drop-down menu, go in to Configure Job and just save it.
 
 After all the steps, the **Load_Cartridge** job should look something like this -
+
 ![Updated Load Cartridge job](/pluggable-scm-library/images/docs/updated-load-cartridge.JPG)
