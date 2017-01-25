@@ -65,3 +65,14 @@ _Note: Please use your own values, below are just examples!_
   
   scm.gerrit.server.profile=ADOP Gerrit
   ```
+* Clone this repository on the volume aswell https://github.com/RobertNorthard/adop-pluggable-scm and move the _adop-pluggable-scm/src/main/groovy/pluggable/_ folder into _/var/jenkins_home/userContent/job_dsl_additional_classpath/_
+* Add the following Environment Variables in _Manage Jenkins -> Configure System -> Global Properties_
+  - PLUGGABLE_SCM_PROVIDER_PROPERTIES_PATH="/var/jenkins_home/userContent/datastore/pluggable/scm"
+  - PLUGGABLE_SCM_PROVIDER_PATH="/var/jenkins_home/userContent/job_dsl_additional_classpath/"
+* Install the _Active Choices_ plugin from _Manage Jenkins_ (You will probably need to restart Jenkins)
+* Add your Jenkins private key (used to connect to Gerrit) as a secret file type credential with the ID *adop-jenkins-private*. This can be done in _Credentials_ section.
+* Create a new Workspace and a new project (which should also have a new parameter), and you should have a new **Load_Cartridge** job ready to go! 
+  - _Note:_ If there is nothing in drop-down menu, go in to Configure Job and just save it.
+
+After all the steps, the **Load_Cartridge** job should look something like this -
+![Updated Load Cartridge job](/images/docs/updated-load-cartridge.JPG)
