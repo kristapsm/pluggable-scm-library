@@ -75,4 +75,4 @@ _Note: Please use your own values, below are just examples!_
   - _Note:_ If there is nothing in drop-down menu, go in to Configure Job and just save it.
 
 After all the steps, the **Load_Cartridge** job should look something like this -
-![Updated Load Cartridge job](/images/docs/updated-load-cartridge.JPG)
+![Updated Load Cartridge job](/pluggable-scm-library/images/docs/updated-load-cartridge.JPG)
