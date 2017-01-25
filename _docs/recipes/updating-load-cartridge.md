@@ -11,10 +11,10 @@ This section describes two ways how to update your ADOP Instance to inherit Plug
 
 # Automatic way
 
-* Re-run **Load_Platform** job to grab all the DSL codes for the new **Load_Cartridge** job
+* Re-run **Load_Platform** job to grab all the DSL jobs for the new **Load_Cartridge** job
 * Update your Jenkins image to be the latest version on the Github repository in your compose and then re-initialise ADOP using **./adop compose init -m _name-of-your-machine_**
   - _Note:_ Just check the latest Jenkins image version [here](https://github.com/Accenture/adop-docker-compose/blob/master/docker-compose.yml#L203), it contains a couple of additional environment variables, plugins and some properties files in the right location. This change has been described below using _Manual_ way.
-* Re-generate your Workspace and Project to ensure you have the latest version of **Load_Cartridge** job which should contain some additional fields
+* Re-generate your Workspace and Project to ensure you have the latest version of **Load_Cartridge** job which should contain some additional fields, take a loot at picture below.
 
 
 # Manual way
