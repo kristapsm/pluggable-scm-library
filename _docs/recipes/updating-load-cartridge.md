@@ -21,7 +21,10 @@ This section describes two ways how to update your ADOP Instance to inherit Plug
 
 This basically describes what changes have been done on the Jenkins image and if you prefer not to use the latest version.
 
+_Note: Please use your own values, below are just examples!_
+
 * Get onto the ADOP/C host and add the following files in the respective locations on the Jenkins volume (you have to create all directories manually)
+
   - /var/jenkins_home/userContent/datastore/pluggable/scm/CartridgeLoader/adop-gerrit-1.loader.props
   
 ```
@@ -32,4 +35,35 @@ gerrit.port=29418
 gerrit.protocol=ssh
 gerrit.permissions.path=${PROJECT_NAME}/permissions
 gerrit.permissions.with_review.path=${PROJECT_NAME}/permissions-with-review
+```
+
+  - /var/jenkins_home/userContent/datastore/pluggable/scm/ScmProviders/adop-gerrit-1.ssh.props
+  
+```
+scm.loader.id=adop-gerrit-1
+scm.id=adop-gerrit-ssh
+scm.type=gerrit
+scm.code_review.enabled=true
+scm.protocol=ssh
+scm.port=29418
+scm.host=10.0.0.1
+scm.url=http://<IP>/gerrit/
+
+scm.gerrit.server.profile=ADOP Gerrit
+scm.gerrit.ssh.clone.user=jenkins
+```
+
+  - /var/jenkins_home/userContent/datastore/pluggable/scm/ScmProviders/adop-gerrit-1.http.props
+  
+```
+scm.loader.id=adop-gerrit-1
+scm.id=adop-gerrit-http
+scm.type=gerrit
+scm.code_review.enabled=true
+scm.protocol=http
+scm.port=8080
+scm.host=10.0.0.1
+scm.url=http://<IP>/gerrit/
+
+scm.gerrit.server.profile=ADOP Gerrit
 ```
